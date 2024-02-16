@@ -8,20 +8,20 @@ import pyttsx3
 engine = pyttsx3.init()
 TH_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_THAI"
 engine.setProperty('voice', TH_voice_id)
-engine.setProperty('rate', 120)  #148
+engine.setProperty('rate', 120)  #ช้าลงหรือเพิ่มขึ้น 0-148
 
 win = Tk()
 width=win.winfo_screenwidth()
 height=win.winfo_screenheight()
 win.geometry("%dx%d" % (width, height))
 win.configure(bg="#FFFFFF")
-win.title('Sign Language Translator : URRWNM CODING (ภาษาไทย)')
+win.title('Sign Language Translator : URRWNM CODING')
 
-global img,finalImage,finger_tips,thumb_tip,cap, image, rgb, hand, results, _, w,h,status,mpDraw,mpHands,hands,label1,btn,btn2
+global img,finalImage,finger_tips,thumb_tip,cap, image, rgb, hand, results, _, w,h,status,mpDraw,mpHands,hands,label1
 
 cap=None
 
-Label(win,text='Sign Language : URRWNM CODING',font=('Helvatica',18,'italic'),bd=5,bg='#199ef3',fg='white',relief=SOLID,width=200 ).pack(pady=15,padx=300)
+Label(win,text='Sign Language Translator : URRWNM CODING (ภาษาไทย)',font=('Helvatica',18,'italic'),bd=5,bg='#199ef3',fg='white',relief=SOLID,width=200 ).pack(pady=15,padx=300)
 
 def wine():
     global finger_tips, thumb_tip, mpDraw, mpHands, cap, w, h, hands, label1, check, img
@@ -75,7 +75,7 @@ def live():
                     lm_list[16].y < lm_list[14].y and lm_list[20].y < lm_list[18].y and lm_list[17].x < lm_list[0].x < \
                     lm_list[5].x:
                 cshow = 'STOP ! Dont move.'
-                print('STOP ! Dont move.')
+                #print('STOP ! Dont move.')
                 #upCount.set('STOP ! Dont move.')
                 engine.say("หยุดอย่าขยับ")
                 engine.runAndWait()
