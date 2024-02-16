@@ -14,6 +14,7 @@ win = Tk()
 width=win.winfo_screenwidth()
 height=win.winfo_screenheight()
 win.geometry("%dx%d" % (width, height))
+win.iconbitmap(r'C:\Users\NW\Documents\Python\sign\info.ico') ##************ path ไอคอน
 win.configure(bg="#FFFFFF")
 win.title('Sign Language Translator : URRWNM CODING')
 
@@ -21,7 +22,7 @@ global img,finalImage,finger_tips,thumb_tip,cap, image, rgb, hand, results, _, w
 
 cap=None
 
-Label(win,text='Sign Language Translator : URRWNM CODING (ภาษาไทย)',font=('Helvatica',18,'italic'),bd=5,bg='#199ef3',fg='white',relief=SOLID,width=200 ).pack(pady=15,padx=300)
+Label(win,text='Sign Language Translator : URRWNM CODING (ภาษาไทย)',font=('Helvatica',18,'italic'),bd=5,bg='#f31932',fg='white',relief=SOLID,width=200 ).pack(pady=15,padx=300)
 
 def wine():
     global finger_tips, thumb_tip, mpDraw, mpHands, cap, w, h, hands, label1, check, img
