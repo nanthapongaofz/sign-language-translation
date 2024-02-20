@@ -3,12 +3,25 @@ from PIL import Image, ImageTk
 import cv2
 #from tkinter import filedialog
 import mediapipe as mp
-import pyttsx3
+#import pyttsx3
+import pygame
 
-engine = pyttsx3.init()
-TH_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_THAI"
-engine.setProperty('voice', TH_voice_id)
-engine.setProperty('rate', 120)  #ช้าลงหรือเพิ่มขึ้น 0-148
+#engine = pyttsx3.init()
+#TH_voice_id = "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Speech\Voices\Tokens\TTS_THAI"
+#engine.setProperty('voice', TH_voice_id)
+#engine.setProperty('rate', 120)  #ช้าลงหรือเพิ่มขึ้น 0-148
+
+pygame.init()
+pygame.mixer.init()
+s01 = 'C:/Users/NW/Documents/Python/sign/sound/หยุดอย่าขยับ.wav'
+s02 = 'C:/Users/NW/Documents/Python/sign/sound/ยอดเยี่ยมคุณทำได้ดีมาก.wav'
+s03 = 'C:/Users/NW/Documents/Python/sign/sound/ยินดีที่ได้พบคุณ.wav'
+s04 = 'C:/Users/NW/Documents/Python/sign/sound/ขยับมาใกล้ๆ.wav'
+s05 = 'C:/Users/NW/Documents/Python/sign/sound/เย่!เราชนะแล้ว.wav'
+s06 = 'C:/Users/NW/Documents/Python/sign/sound/ขยับมาทางซ้าย.wav'
+s07 = 'C:/Users/NW/Documents/Python/sign/sound/ขยับมาทางขวา.wav'
+s08 = 'C:/Users/NW/Documents/Python/sign/sound/ฉันเห็นด้วยนะ.wav'
+s09 = 'C:/Users/NW/Documents/Python/sign/sound/ไม่เอาดีกว่า.wav'
 
 win = Tk()
 width=win.winfo_screenwidth()
@@ -78,8 +91,16 @@ def live():
                 cshow = 'STOP ! Dont move.'
                 #print('STOP ! Dont move.')
                 #upCount.set('STOP ! Dont move.')
-                engine.say("หยุดอย่าขยับ")
-                engine.runAndWait()
+                #engine.say("หยุดอย่าขยับ")
+                #engine.runAndWait()
+                #s01.play()
+                #pygame.mixer.init()
+                pygame.mixer.music.load(s01)
+                pygame.mixer.music.play()
+                #pygame.event.wait()
+                
+                
+                
             # okay
             elif lm_list[4].y < lm_list[2].y and lm_list[8].y > lm_list[6].y and lm_list[12].y < lm_list[10].y and \
                     lm_list[16].y < lm_list[14].y and lm_list[20].y < lm_list[18].y and lm_list[17].x < lm_list[0].x < \
@@ -87,9 +108,13 @@ def live():
                 cshow = 'Perfect , You did  a great job.'
                 #print('Perfect , You did  a great job.')
                 #upCount.set('Perfect , You did  a great job.')
-                engine.say("ยอดเยี่ยม คุณทำได้ดีมาก")
-                engine.runAndWait()
-
+                #engine.say("ยอดเยี่ยม คุณทำได้ดีมาก")
+                #engine.runAndWait()
+                #s02.play()
+                #pygame.mixer.init()
+                pygame.mixer.music.load(s02)
+                pygame.mixer.music.play()
+                #pygame.event.wait()
             # spidey
             elif lm_list[4].y < lm_list[2].y and lm_list[8].y < lm_list[6].y and lm_list[12].y > lm_list[10].y and \
                     lm_list[16].y > lm_list[14].y and lm_list[20].y < lm_list[18].y and lm_list[17].x < lm_list[0].x < \
@@ -97,59 +122,84 @@ def live():
                 cshow = 'Good to see you.'
                 #print(' Good to see you. ')
                 #upCount.set('Good to see you.')
-                engine.say("ยินดีที่ได้พบคุณ")
-                engine.runAndWait()
-
+                #engine.say("ยินดีที่ได้พบคุณ")
+                #engine.runAndWait()
+                pygame.mixer.music.load(s03)
+                pygame.mixer.music.play()
+                #s03.play()
+                
             # Point
             elif lm_list[8].y < lm_list[6].y and lm_list[12].y > lm_list[10].y and \
                     lm_list[16].y > lm_list[14].y and lm_list[20].y > lm_list[18].y:
                 #upCount.set('You Come here.')
                 #print("You Come here.")
                 cshow = 'You Come here.'
-                engine.say("ขยับมาใกล้ๆ")
-                engine.runAndWait()
-
+                #engine.say("ขยับมาใกล้ๆ")
+                #engine.runAndWait()
+                #s04.play()
+                pygame.mixer.music.load(s04)
+                pygame.mixer.music.play()
+                
             # Victory
             elif lm_list[8].y < lm_list[6].y and lm_list[12].y < lm_list[10].y and \
                     lm_list[16].y > lm_list[14].y and lm_list[20].y > lm_list[18].y:
                 #upCount.set('Yes , we won.')
                 #print("Yes , we won.")
                 cshow = 'Yes , we won.'
-                engine.say("เย้ เราชนะแล้ว")
-                engine.runAndWait()
-
+                #engine.say("เย้ เราชนะแล้ว")
+                #engine.runAndWait()
+                pygame.mixer.music.load(s05)
+                pygame.mixer.music.play()
+                #s05.play()
+                
             # Left
             elif lm_list[4].y < lm_list[2].y and lm_list[8].x < lm_list[6].x and lm_list[12].x > lm_list[10].x and \
                     lm_list[16].x > lm_list[14].x and lm_list[20].x > lm_list[18].x and lm_list[5].x < lm_list[0].x:
                 #upCount.set('Move Left')
                 #print(" MOVE LEFT")
                 cshow = 'Move Left'
-                engine.say("ขยับมาทางซ้าย")
-                engine.runAndWait()
+                #engine.say("ขยับมาทางซ้าย")
+                #engine.runAndWait()
+                #s06.play()
+                pygame.mixer.music.load(s06)
+                pygame.mixer.music.play()
+                
             # Right
             elif lm_list[4].y < lm_list[2].y and lm_list[8].x > lm_list[6].x and lm_list[12].x < lm_list[10].x and \
                     lm_list[16].x < lm_list[14].x and lm_list[20].x < lm_list[18].x:
                 #upCount.set('Move Right')
                 #print("Move RIGHT")
                 cshow = 'Move Right'
-                engine.say("ขยับมาทางขวา")
-                engine.runAndWait()
+                #engine.say("ขยับมาทางขวา")
+                #engine.runAndWait()
+                #s07.play()
+                pygame.mixer.music.load(s07)
+                pygame.mixer.music.play()
+                
             if all(finger_fold_status):
                 # like
                 if lm_list[thumb_tip].y < lm_list[thumb_tip - 1].y < lm_list[thumb_tip - 2].y and lm_list[0].x < lm_list[3].y:
                     #print("I like it")
                     #upCount.set('I Like it')
                     cshow = 'I Like it'
-                    engine.say("ฉันเห็นด้วยนะ")
-                    engine.runAndWait()
+                    #engine.say("ฉันเห็นด้วยนะ")
+                    #engine.runAndWait()
+                    #s08.play()
+                    pygame.mixer.music.load(s08)
+                    pygame.mixer.music.play()
+                    
                 # Dislike
                 elif lm_list[thumb_tip].y > lm_list[thumb_tip - 1].y > lm_list[thumb_tip - 2].y and lm_list[0].x < lm_list[3].y:
                     #upCount.set('I dont like it.')
                     #print(" I dont like it.")
                     cshow = 'I dont like it.'
-                    engine.say("ไม่เอาดีกว่า")
-                    engine.runAndWait()
-
+                    #engine.say("ไม่เอาดีกว่า")
+                    #engine.runAndWait()
+                    #s09.play()
+                    pygame.mixer.music.load(s09)
+                    pygame.mixer.music.play()
+            
+        else:
             mpDraw.draw_landmarks(rgb, hand, mpHands.HAND_CONNECTIONS)
         cv2.putText(rgb, f'{cshow}', (10, 50),
                 cv2.FONT_HERSHEY_COMPLEX, .75, (0, 255, 255), 2)
