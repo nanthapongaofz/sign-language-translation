@@ -67,6 +67,7 @@ def live():
     img = cv2.resize(img, (w, h))
     rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     results = hands.process(rgb)
+    
     if results.multi_hand_landmarks:
         for hand in results.multi_hand_landmarks:
             lm_list = []
